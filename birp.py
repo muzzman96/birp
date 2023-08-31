@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/python2.7
 
 from py3270wrapper import WrappedEmulator
 import tn3270
@@ -200,11 +200,12 @@ def interactive(em,history):
 			em.exec_command('Right()')
 		elif key == getch.KEY_ENTER: # Enter
 			trans = exec_trans(em,history,'enter')
-			print(trans.response.colorbuffer)
+			print(trans.response.colorbuffer.encode("ascii", "ignore")
 			logger('Enter entered',kind='info')
 		elif key == getch.KEY_CTRLr: # Ctrl-r print screen
 			screen = update_screen(em,screen)
-			print(screen.colorbuffer)
+			#print(screen.colorbuffer)
+			print(screen.colorbuffer.encode("ascii", "ignore"))
 			logger('Screen refreshed',kind='info')
 		elif key == getch.KEY_CTRLu: # Ctrl-u manually push transaction
 			screen = update_screen(em,screen)
@@ -234,66 +235,66 @@ def interactive(em,history):
 			em.exec_command('Clear()')
 		elif key == getch.KEY_CTRLq: # Ctrl-q PA1
 			trans = exec_trans(em,history,25)
-			print(trans.response.colorbuffer)
+			print(trans.response.colorbuffer.encode("ascii", "ignore"))
 		elif key == getch.KEY_CTRLw: # Ctrl-w PA2
 			trans = exec_trans(em,history,26)
-			print(trans.response.colorbuffer)
+			print(trans.response.colorbuffer.encode("ascii", "ignore")
 		elif key == getch.KEY_CTRLe: # Ctrl-e PA3
 			trans = exec_trans(em,history,27)
-			print(trans.response.colorbuffer)
+			print(trans.response.colorbuffer.encode("ascii", "ignore")
 		elif key > 31 and key < 127: # Alphanumeric
 			em.safe_send(chr(key))
 		elif key == getch.KEY_F1:
 			trans = exec_trans(em,history,1)
-			print(trans.response.colorbuffer)
+			print(trans.response.colorbuffer.encode("ascii", "ignore")
 		elif key == getch.KEY_F2:
 			trans = exec_trans(em,history,2)
-			print(trans.response.colorbuffer)
+			print(trans.response.colorbuffer.encode("ascii", "ignore")
 		elif key == getch.KEY_F3:
 			trans = exec_trans(em,history,3)
-			print(trans.response.colorbuffer)
+			print(trans.response.colorbuffer.encode("ascii", "ignore")
 		elif key == getch.KEY_F4:
 			trans = exec_trans(em,history,4)
-			print(trans.response.colorbuffer)
+			print(trans.response.colorbuffer.encode("ascii", "ignore")
 		elif key == getch.KEY_F5:
 			trans = exec_trans(em,history,5)
-			print(trans.response.colorbuffer)
+			print(trans.response.colorbuffer.encode("ascii", "ignore")
 		elif key == getch.KEY_F6:
 			trans = exec_trans(em,history,6)
-			print(trans.response.colorbuffer)
+			print(trans.response.colorbuffer.encode("ascii", "ignore")
 		elif key == getch.KEY_F7:
 			trans = exec_trans(em,history,7)
-			print(trans.response.colorbuffer)
+			print(trans.response.colorbuffer.encode("ascii", "ignore")
 		elif key == getch.KEY_F8:
 			trans = exec_trans(em,history,8)
-			print(trans.response.colorbuffer)
+			print(trans.response.colorbuffer.encode("ascii", "ignore")
 		elif key == getch.KEY_F9:
 			trans = exec_trans(em,history,9)
-			print(trans.response.colorbuffer)
+			print(trans.response.colorbuffer.encode("ascii", "ignore")
 		elif key == getch.KEY_F10:
 			trans = exec_trans(em,history,10)
-			print(trans.response.colorbuffer)
+			print(trans.response.colorbuffer.encode("ascii", "ignore")
 		elif key == getch.KEY_F11:
 			trans = exec_trans(em,history,11)
-			print(trans.response.colorbuffer)
+			print(trans.response.colorbuffer.encode("ascii", "ignore")
 		elif key == getch.KEY_F12:
 			trans = exec_trans(em,history,12)
-			print(trans.response.colorbuffer)
+			print(trans.response.colorbuffer.encode("ascii", "ignore")
 		elif key == getch.KEY_AltF8:
 			trans = exec_trans(em,history,13)
-			print(trans.response.colorbuffer)
+			print(trans.response.colorbuffer.encode("ascii", "ignore")
 		elif key == getch.KEY_AltF9:
 			trans = exec_trans(em,history,14)
-			print(trans.response.colorbuffer)
+			print(trans.response.colorbuffer.encode("ascii", "ignore")
 		elif key == getch.KEY_AltF10:
 			trans = exec_trans(em,history,15)
-			print(trans.response.colorbuffer)
+			print(trans.response.colorbuffer.encode("ascii", "ignore")
 		elif key == getch.KEY_AltF11:
 			trans = exec_trans(em,history,16)
-			print(trans.response.colorbuffer)
+			print(trans.response.colorbuffer.encode("ascii", "ignore")
 		elif key == getch.KEY_AltF12:
 			trans = exec_trans(em,history,24)
-			print(trans.response.colorbuffer)
+			print(trans.response.colorbuffer.encode("ascii", "ignore")
 
 def save_history(history,savefile):
 	if path.exists(savefile):
